@@ -1,33 +1,36 @@
 import './App.css';
-import {Book} from "./Book";
-import {useState} from "react";
+import {Product} from "./components/Product";
+import {data} from "./ProductList"
+import {useEffect, useState} from "react";
 
 function App() {
-  let [MyArray, setMyArray] = useState([3,2]);
-  const [sortStatus, setSortStatus] = useState(true);
-
-  const handleSort = () => {
-    const data = MyArray;
-    if (sortStatus) {
-      let sorted = data.sort((a, b) => a[1] - b[1]);
-      setMyArray(sorted);
-      setSortStatus(!sortStatus);
-    } else {
-      let sorted = data.sort((a, b) => b[1] - a[1]);
-      setMyArray(sorted);
-      setSortStatus(!sortStatus);
-    }
+  const [productList, setProductList] = useState(data);
+  function increaseLike(product) {
+    let resultList = productList.filter(p=>p!==product)
+    console.log(resultList)
+    product.likes+=1
+    resultList=[...resultList,product]
+    resultList.sort((a,b)=>b.likes-a.likes)
+    setProductList(resultList)
+    console.log(resultList)
   }
+  useEffect(()=>{
+    let resultList = productList
+    console.log(resultList)
+    resultList.sort((a,b)=>b.likes-a.likes)
+    setProductList(resultList)
+    console.log(resultList)
+  },[])
+
   return (
     <>
-      <Book like={MyArray[0]}/>
-      <Book like={MyArray[1]}/>
-      <button onClick={handleSort}>ClickMe to Sort</button>
-        <ul>
-        {MyArray.map((reptile) => (
-        <li>{reptile}</li>
-      ))}
-    </ul>
+      {productList.map(product=>(
+        <>
+          <Product product={product}/>
+          <button onClick={()=>increaseLike(product)}><p>{product.likes}</p></button>
+          <hr/>
+        </>
+      ) )}
     </>
   );
 }
