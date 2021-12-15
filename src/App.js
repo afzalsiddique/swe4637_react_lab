@@ -7,23 +7,24 @@ function App() {
   const [productList, setProductList] = useState(data);
   function increaseLike(product) {
     let resultList = productList.filter(p=>p!==product)
-    console.log(resultList)
+    // console.log(resultList)
     product.likes+=1
     resultList=[...resultList,product]
     resultList.sort((a,b)=>b.likes-a.likes)
     setProductList(resultList)
-    console.log(resultList)
+    // console.log(resultList)
   }
   useEffect(()=>{
     let resultList = productList
-    console.log(resultList)
+    // console.log(resultList)
     resultList.sort((a,b)=>b.likes-a.likes)
     setProductList(resultList)
-    console.log(resultList)
-  },[])
+    // console.log(resultList)
+  },[productList])
 
   return (
     <>
+      {/*{console.log(productList)}*/}
       {productList.map(product=>(
         <>
           <Product product={product}/>
