@@ -8,10 +8,10 @@ export function Product({product}) {
   // }
   return (
     <>
-      <img src={productImageUrl} width="175" height="250"/>,
+      <img src={productImageUrl} width="175" height="auto"/>,
       <p>{title}</p>
       <p>{description}</p>
-      <p><font size="4"> Submitted By: <img src={submitter} width="50" height="50"/></font></p>
+      <p><font size="4"> Submitted By: <img src={submitter} width="50" height="auto"/></font></p>
       {/*<p>{likes}</p>*/}
     </>
   )
