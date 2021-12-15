@@ -20,7 +20,7 @@ function App() {
     resultList.sort((a,b)=>b.likes-a.likes)
     setProductList(resultList)
     // console.log(resultList)
-  },[productList])
+  },[])
 
   return (
     <>
