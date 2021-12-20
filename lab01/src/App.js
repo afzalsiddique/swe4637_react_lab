@@ -3,6 +3,7 @@ import {Product} from "./components/Product";
 import {data} from "./ProductList"
 import {useEffect, useState} from "react";
 
+
 function App() {
   const [productList, setProductList] = useState(data);
   function increaseLike(product) {
