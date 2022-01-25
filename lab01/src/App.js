@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 
 function App() {
   const [productList, setProductList] = useState(data);
-  function increaseLike(product) {
+  function incrementVote(product) {
     let resultList = productList.filter(p=>p!==product)
     // console.log(resultList)
     product.likes+=1
@@ -25,11 +25,11 @@ function App() {
 
   return (
     <>
-      {/*{console.log(productList)}*/}
+      {console.log(productList)}
       {productList.map(product=>(
         <>
           <Product product={product}/>
-          <button onClick={()=>increaseLike(product)}><p>{product.likes}</p></button>
+          <button onClick={()=>incrementVote(product)}><p>{product.likes}</p></button>
           <hr/>
         </>
       ) )}
